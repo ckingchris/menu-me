@@ -19,7 +19,7 @@ p {
 
 .form-container {
   max-width: 600px;
-  margin: 20px auto 0;
+  margin: 10px auto 10px;
   background: transparent;
   padding: 60px;
   box-shadow: 0px 0px 2px 2px #dcdcdc;
