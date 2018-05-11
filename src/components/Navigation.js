@@ -12,10 +12,6 @@ import SignOutButton from './SignOut';
 
 import * as routes from '../constants/routes';
 
-const brandStyle = {
-  color : 'black !important',
-  textDecoration: 'none !important'
-}
 
 const Navigation = () =>
   <AuthUserContext.Consumer>
@@ -27,14 +23,12 @@ const Navigation = () =>
 
 const NavigationAuth = () =>
   <Navbar color="light" light expand="md">
-    <NavbarBrand>
-      <Link 
-        to={routes.HOME}
-        style={brandStyle}
-      >
-        menu.me
-      </Link>
-    </NavbarBrand>
+    <Link 
+      className="navbar-brand"
+      to={routes.HOME}
+    >
+      menu.me
+    </Link>
     <Nav className="ml-auto" navbar>
       <NavItem>
         <NavLink>
@@ -51,7 +45,11 @@ const NavigationAuth = () =>
 
 const NavigationNonAuth = () =>
   <Navbar color="light" light expand="md">
-    <NavbarBrand><Link to={routes.LANDING}>menu.me</Link></NavbarBrand>
+    <Link 
+      className="navbar-brand"
+      to={routes.LANDING}
+    >
+    menu.me</Link>
     <Nav className="ml-auto" navbar>
       <NavItem>
         <NavLink>
