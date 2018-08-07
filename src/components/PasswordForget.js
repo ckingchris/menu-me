@@ -1,12 +1,23 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { 
+  Container,
+  Button, 
+  Form, 
+  FormGroup, 
+  Label, 
+  Input } from 'reactstrap';
 
 import { auth } from '../firebase';
 
 const PasswordForgetPage = () =>
   <div>
-    <h1>PasswordForget</h1>
-    <PasswordForgetForm />
+    <Container>
+      <div className="form-container">
+        <h3>Reset Password</h3>
+        <PasswordForgetForm />
+      </div>
+    </Container>
   </div>
 
 const byPropKey = (propertyName, value) => () => ({
@@ -48,19 +59,39 @@ class PasswordForgetForm extends Component {
     const isInvalid = email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          value={this.state.email}
-          onChange={event => this.setState(byPropKey('email', event.target.value))}
-          type="text"
-          placeholder="Email Address"
-        />
-        <button disabled={isInvalid} type="submit">
+      <Form onSubmit={this.onSubmit}>
+        <FormGroup>
+          <Label for="email">Email</Label>
+          <Input 
+            value={email}
+            onChange={event => this.setState(byPropKey('email', event.target.value))}
+            type="text"
+            placeholder="Email Address"
+          />
+        </FormGroup>
+        <Button
+          className="btn-info" 
+          disabled={isInvalid} 
+          type="submit"
+        >
           Reset My Password
-        </button>
+        </Button>
 
         { error && <p>{error.message}</p> }
-      </form>
+      </Form>
+      // <form onSubmit={this.onSubmit}>
+      //   <input
+      //     value={this.state.email}
+      //     onChange={event => this.setState(byPropKey('email', event.target.value))}
+      //     type="text"
+      //     placeholder="Email Address"
+      //   />
+      //   <button disabled={isInvalid} type="submit">
+      //     Reset My Password
+      //   </button>
+
+      //   { error && <p>{error.message}</p> }
+      // </form>
     );
   }
 }
